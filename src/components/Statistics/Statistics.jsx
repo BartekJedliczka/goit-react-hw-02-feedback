@@ -37,7 +37,7 @@ import PropTypes from 'prop-types';
 
 class Statistics extends Component {
   render() {
-    const { good, neutral, bad, total } = this.props;
+    const { good, neutral, bad, total, positivePercentage } = this.props;
     return (
       <>
         <ul className={css.list}>
@@ -46,16 +46,18 @@ class Statistics extends Component {
           <li className={css.item}>Bad: {bad}</li>
           <li className={css.item}>Total: {total}</li>
         </ul>
-        <p>Positive feddback: (' ')&</p>
+        <p className={css.feedback}>Positive feedback: {positivePercentage}%</p>
       </>
     );
   }
 }
 
 Statistics.propTypes = {
-  good: PropTypes.string.isRequired,
-  neutral: PropTypes.string.isRequired,
-  bad: PropTypes.string.isRequired,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 
 export default Statistics;
